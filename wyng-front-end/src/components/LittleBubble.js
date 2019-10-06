@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components'
+import PropTypes from 'prop-types';
+
+
 React.createClass = require('create-react-class');
 
 const Bubble = styled.div`
@@ -18,21 +21,24 @@ font-family: optima, sans-serif;
 const LittleBubble = React.createClass({
 
     propTypes: {
-
+        colorIndex: PropTypes.number,
+        isTag: PropTypes.bool,
+        className: PropTypes.string,
     },
 
     getDefaultProps() {
         return {
-
+            colorIndex: 0,
+            className: ""
         };
     },
 
     render() {
-        const colors = ["#ff4848", "#ffdc4a", "#4a8bff", "#4dff51", "#9c50ff" ]
-        const {colorIndex} = this.props;
+        const colors = ["#ff4848", "#ffdc4a", "#4a8bff", "#4dff51", "#9c50ff"]
+        const { colorIndex, className } = this.props;
 
         return (
-            <div> <Bubble style = {{backgroundColor: colors[colorIndex]}}>EL</Bubble> </div>
+            <Bubble className={className} style={{ backgroundColor: colors[colorIndex] }}>EL</Bubble>
         );
     }
 })

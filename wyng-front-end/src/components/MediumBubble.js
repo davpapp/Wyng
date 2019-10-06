@@ -1,22 +1,27 @@
 import React from 'react';
+import styled from 'styled-components'
+import PropTypes from 'prop-types';
 React.createClass = require('create-react-class');
 
-
+const Picture = styled.img`
+color: white;
+border-radius: 50%;
+height: 34px;
+width: 34px;
+object-fit: cover;
+`
 const MediumBubble = React.createClass({
 
     propTypes: {
-
-    },
-
-    getDefaultProps() {
-        return {
-
-        };
+        pictureUrl: PropTypes.string.isRequired,
     },
 
     render() {
+        const { pictureUrl } = this.props;
+
         return (
-            <div> THIS IS MEDIUMBUBBLE </div>
+            <Picture src={pictureUrl}></Picture>
+            
         );
     }
 })
